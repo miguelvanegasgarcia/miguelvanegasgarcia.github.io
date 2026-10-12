@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Forschungsportfolio von Miguel Vanegas: interaktive Karten und Analysen aus Master- und Bachelorarbeit.">
+<title>Miguel Vanegas Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap">
+<style>
+/* Layout: one reading column; each thesis is a chapter with a figure panel (maps, charts) set on a paper-white plate. */
+:root{
+  --bg:#f4f6f8; --surface:#ffffff; --plate:#ffffff;
+  --fg:#16202b; --muted:#566373; --line:#d9dfe6;
+  --accent:#1f7a73; --accent-soft:#dcefed; --violet:#5b3e96;
+  --pos:#1f7a73; --neg:#b4473a; --ns:#9aa5b1;
+  --display:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f151b; --surface:#16202a; --plate:#f3f5f7;
+    --fg:#e6ebf0; --muted:#9aa8b6; --line:#2a3743;
+    --accent:#4fbfb4; --accent-soft:#18332f; --violet:#a891d8;
+    --pos:#4fbfb4; --neg:#e07b6d; --ns:#66737f; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f151b; --surface:#16202a; --plate:#f3f5f7;
+  --fg:#e6ebf0; --muted:#9aa8b6; --line:#2a3743;
+  --accent:#4fbfb4; --accent-soft:#18332f; --violet:#a891d8;
+  --pos:#4fbfb4; --neg:#e07b6d; --ns:#66737f; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6}
+.wrap{max-width:960px;margin:0 auto;padding-inline:20px;padding-block:40px 64px}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.2;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,5vw,2.8rem)}
+h2{font-size:clamp(1.5rem,3.5vw,1.95rem)}
+h3{font-size:1.15rem;font-family:var(--body);font-weight:600}
+p{margin:0;max-width:68ch}
+.eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.muted{color:var(--muted)}
+header{display:grid;gap:14px;padding-bottom:28px;border-bottom:1px solid var(--line)}
+.lede{font-size:1.1rem;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:4px 0 0}
+.chips li{font-family:var(--mono);font-size:.82rem;padding:3px 10px;border:1px solid var(--line);border-radius:4px;background:var(--surface)}
+.contact{display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:.95rem}
+.contact code{font-family:var(--mono);background:var(--surface);border:1px solid var(--line);padding:3px 8px;border-radius:4px;user-select:all}
+button{font:inherit;cursor:pointer}
+.btn{font-size:.85rem;padding:4px 10px;border-radius:4px;border:1px solid var(--line);background:var(--surface);color:var(--fg)}
+.btn:hover{border-color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+section.thesis{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;padding-block:44px;border-bottom:1px solid var(--line)}
+.meta{font-family:var(--mono);font-size:.82rem;color:var(--muted)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(130px,100%),1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.facts div{background:var(--surface);padding:12px 14px}
+.facts b{display:block;font-family:var(--mono);font-weight:500;font-size:clamp(1.05rem,4.5vw,1.35rem);font-variant-numeric:tabular-nums}
+.facts span{font-size:.8rem;color:var(--muted)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.two>*{min-width:0}
+@media (max-width:720px){.two{grid-template-columns:1fr}}
+ul.plain{margin:0;padding-left:1.1em;display:grid;gap:6px}
+.question{border-left:3px solid var(--accent);padding:4px 0 4px 16px;font-family:var(--display);font-size:1.15rem;line-height:1.45;max-width:68ch}
+/* map viewer */
+.viewer{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.controls{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.seg button{border:0;background:transparent;color:var(--fg);padding:6px 12px;font-size:.88rem}
+.seg button[aria-pressed="true"]{background:var(--accent);color:#fff}
+.yearrow{display:flex;align-items:center;gap:12px;flex:1 1 220px;min-width:0}
+@media (max-width:420px){.viewer{padding:12px}.seg button{padding:6px 9px;font-size:.82rem}}
+.yearrow input{flex:1;min-width:0;accent-color:var(--accent)}
+.year{font-family:var(--mono);font-size:1.1rem;font-variant-numeric:tabular-nums;min-width:3.2em}
+.badge{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;border:1px solid currentColor}
+.badge.obs{color:var(--accent)} .badge.proj{color:var(--violet)}
+.plate{background:var(--plate);border-radius:6px;display:flex;justify-content:center;align-items:center;min-height:300px;padding:10px}
+.plate img{max-height:560px;width:auto;max-width:100%;display:block}
+.caption{font-size:.9rem;color:var(--muted)}
+.caption strong{color:var(--fg);font-weight:600}
+/* tables */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.9rem;min-width:560px}
+th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+tr:last-child td{border-bottom:0}
+.neg{color:var(--neg)} .pos{color:var(--pos)}
+/* charts */
+.chart{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;display:grid;gap:10px;min-width:0}
+.chart svg{width:100%;height:auto;display:block;overflow:visible}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:.82rem;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+footer{padding-top:32px;display:grid;gap:10px;font-size:.92rem;color:var(--muted)}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <span class="eyebrow">Forschungs- &amp; Datenportfolio</span>
+  <h1>Miguel Vanegas</h1>
+  <p class="lede">Volkswirt (B.Sc. Universidad de los Andes, M.A. HTW Berlin). Ich baue Paneldatensätze aus amtlichen Quellen, schätze ökonometrische Modelle und mache die Ergebnisse als Karten und Grafiken lesbar.</p>
+  <ul class="chips" aria-label="Werkzeuge">
+    <li>R (RStudio)</li><li>Stata</li><li>Python (pandas)</li><li>SQL</li><li>SAS</li><li>SPSS</li><li>Power BI</li><li>Excel</li>
+  </ul>
+  <div class="contact">
+    <span class="muted">Kontakt:</span>
+    <code id="mail">miguelvanegas3@gmail.com</code>
+    <button class="btn" id="copy" type="button">Kopieren</button>
+    <span class="muted">· Berlin</span>
+  </div>
+</header>
+
+<section class="thesis" id="masterarbeit">
+  <div style="display:grid;gap:8px">
+    <span class="eyebrow">Masterarbeit · HTW Berlin · 2026</span>
+    <h2>Energiewende in Kolumbien: Wasserstoffausbau, Kohleabhängigkeit und regionale Wettbewerbsfähigkeit</h2>
+    <p class="meta">Betreuung: Prof. Dr. Camille Logeay, Dr. Ourania Papasozomenou · Note: gut (2,13) · Werkzeuge: R, Python, Excel</p>
+  </div>
+  <p class="question">Wie hängen installierte Wasserstoffkapazität und Kohleabhängigkeit mit der Entwicklung der Wettbewerbsfähigkeit kolumbianischer Departements zusammen, wenn man Unterschiede in der Umweltperformance berücksichtigt?</p>
+  <div class="facts">
+    <div><b>49</b><span>Regionen (33 CO, 16 CL)</span></div>
+    <div><b>2019–2030</b><span>beobachtet bis 2025, danach Projektion</span></div>
+    <div><b>604</b><span>Beobachtungen im gepoolten Panel</span></div>
+    <div><b>7</b><span>Modellspezifikationen</span></div>
+  </div>
+
+  <div class="viewer" aria-label="Kartenansicht">
+    <div class="controls">
+      <div class="seg" role="group" aria-label="Land">
+        <button type="button" data-country="co" aria-pressed="true">Kolumbien</button>
+        <button type="button" data-country="cl" aria-pressed="false">Chile</button>
+      </div>
+      <div class="seg" role="group" aria-label="Ebene">
+        <button type="button" data-layer="h2" aria-pressed="true">Wasserstoffprojekte</button>
+        <button type="button" data-layer="wb" aria-pressed="false">Wettbewerbsfähigkeit</button>
+      </div>
+      <div class="yearrow">
+        <button class="btn" id="play" type="button" aria-label="Jahre abspielen">▶</button>
+        <input id="yr" type="range" min="2019" max="2030" step="1" value="2025" aria-label="Jahr">
+        <span class="year" id="yrLabel">2025</span>
+        <span class="badge obs" id="yrBadge">beobachtet</span>
+      </div>
+    </div>
+    <div class="plate"><img id="map" src="karten/co-h2-2025.jpg" alt="Karte" width="559" height="530"></div>
+    <p class="caption" id="mapCaption"></p>
+  </div>
+  <p class="caption">Alle 48 Karten habe ich in R aus den harmonisierten Paneldaten erstellt: Wettbewerbsindizes IDC (Kolumbien) und IDERE (Chile), Wasserstoffprojekte aus IEA, IRENA und nationalen Quellen. Die Jahre 2026 bis 2030 beruhen auf angekündigten Projekten und dienen nur der Beschreibung, nicht der Schätzung.</p>
+
+  <div class="two">
+    <div style="display:grid;gap:10px">
+      <h3>Methode</h3>
+      <ul class="plain">
+        <li>Zwei-Wege-Fixed-Effects (Region und Jahr), Standardfehler nach Region geclustert</li>
+        <li>Interaktion Wasserstoffkapazität × Kohleanteil für fossil geprägte Regionen</li>
+        <li>Präsenz-Dummy (extensiver Rand) und um ein Jahr verzögerte Exposition</li>
+        <li>Gepooltes Panel Kolumbien und Chile mit Land×Jahr-Effekten</li>
+        <li>Driscoll-Kraay-Standardfehler als Robustheitstest</li>
+      </ul>
+    </div>
+    <div style="display:grid;gap:10px">
+      <h3>Ergebnis</h3>
+      <ul class="plain">
+        <li>Früher Wasserstoffausbau bringt im Beobachtungszeitraum keinen sofortigen Gewinn an Wettbewerbsfähigkeit.</li>
+        <li>Je höher der Kohleanteil, desto negativer der Zusammenhang (Interaktion signifikant auf 1 %).</li>
+        <li>In Kolumbien fällt der Zusammenhang negativer aus als in Chile; das bestätigt auch die Driscoll-Kraay-Schätzung.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Modell</th><th>Variable</th><th style="text-align:right">Koeffizient</th><th>Signifikanz</th><th style="text-align:right">N</th></tr></thead>
+      <tbody>
+        <tr><td>Basis-FE (Kolumbien)</td><td>Wasserstoffkapazität (MW)</td><td class="num pos">3,19e−7</td><td>p &lt; 0,05</td><td class="num">396</td></tr>
+        <tr><td>Interaktion mit Kohle</td><td>Wasserstoff × Kohleanteil</td><td class="num neg">−2,12e−5</td><td>p &lt; 0,01</td><td class="num">396</td></tr>
+        <tr><td>Präsenz-Dummy</td><td>mindestens ein Projekt</td><td class="num">≈ −0,03</td><td>n.s.</td><td class="num">396</td></tr>
+        <tr><td>Verzögerung (t−1)</td><td>Wasserstoffkapazität</td><td class="num neg">−3,65e−7</td><td>p &lt; 0,01</td><td class="num">363</td></tr>
+        <tr><td>Gepoolt CO + CL</td><td>Wasserstoffkapazität</td><td class="num">7,51e−8</td><td>n.s.</td><td class="num">604</td></tr>
+        <tr><td>Driscoll-Kraay</td><td>Wasserstoff × Kolumbien</td><td class="num neg">−3,39e−7</td><td>p &lt; 0,01</td><td class="num">604</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="thesis" id="bachelorarbeit">
+  <div style="display:grid;gap:8px">
+    <span class="eyebrow">Bachelorarbeit · Universidad de los Andes · 2019</span>
+    <h2>Wirkung von Clusterinitiativen auf Löhne und Einkommen in Kolumbien</h2>
+    <p class="meta">Betreuung: Nicolás de Roux Uribe · Werkzeug: Stata · Daten: DANE, CEDE, Gesundheitsministerium (PILA), Red Cluster Colombia</p>
+  </div>
+  <p class="question">Welchen Effekt hatten die zwischen 2011 und 2017 umgesetzten Clusterinitiativen auf das BIP pro Kopf und die Jahreslöhne der Gemeinden?</p>
+  <div class="facts">
+    <div><b>1.121</b><span>Gemeinden</span></div>
+    <div><b>2011–2017</b><span>Beobachtungszeitraum</span></div>
+    <div><b>7.854</b><span>Panel-Beobachtungen</span></div>
+    <div><b>92</b><span>Clusterinitiativen, 6 Sektoren</span></div>
+  </div>
+  <p>Methode: Difference-in-Differences mit Gemeinde- und Jahres-Effekten. Die Zuordnung der behandelten Gemeinden habe ich in zwei Varianten aufgebaut. Basis 2 ist meine eigene, genauere Auswahl: zwei Monate Recherche über Firmenverzeichnisse, Handelskammern, Energieversorger und Produktionsdaten.</p>
+
+  <div class="viewer" aria-label="Kartenansicht Clusterinitiativen">
+    <div class="controls">
+      <div class="yearrow">
+        <button class="btn" id="play2" type="button" aria-label="Jahre abspielen">▶</button>
+        <input id="yr2" type="range" min="2011" max="2017" step="1" value="2017" aria-label="Jahr">
+        <span class="year" id="yr2Label">2017</span>
+      </div>
+    </div>
+    <div class="plate"><img id="map2" src="karten/co-cl-2017.jpg" alt="Clusterinitiativen je Departement in Kolumbien, 2017" width="484" height="529"></div>
+    <p class="caption" id="map2Caption"></p>
+  </div>
+  <p class="caption">Die sieben Karten zeigen, wie sich die Clusterinitiativen von 2011 bis 2017 über die Departements ausgebreitet haben (0 bis 14 Initiativen je Departement, dunkler = mehr). Eigene Darstellung auf Basis der Daten von Red Cluster Colombia.</p>
+
+  <div class="two">
+    <figure class="chart" style="margin:0">
+      <h3>Behandelte Gemeinden nach Sektor (Basis 2)</h3>
+      <div id="rollout"></div>
+      <div class="legend" id="rolloutLegend"></div>
+    </figure>
+    <figure class="chart" style="margin:0">
+      <h3>Effekt nach Sektor, mit Kontrollen (Basis 2)</h3>
+      <div id="effects"></div>
+      <div class="legend">
+        <span><i style="background:var(--accent)"></i>BIP pro Kopf</span>
+        <span><i style="background:var(--violet)"></i>Jahreslöhne</span>
+        <span><i style="background:var(--ns)"></i>nicht signifikant</span>
+      </div>
+    </figure>
+  </div>
+  <p class="caption">Effekte in Prozent (Log-Punkte × 100), ohne Ausreißer und ohne die größten Städte. Über alle Initiativen hinweg: <strong>+6,9 %</strong> BIP pro Kopf und <strong>+6,6 %</strong> Löhne, jeweils signifikant auf 1 %. Energie und IKT sind die einzigen Sektoren mit konsistent positiven Effekten auf beide Größen.</p>
+</section>
+
+<footer>
+  <p>Beide Arbeiten sende ich auf Anfrage vollständig zu. Die Rohdaten stammen aus amtlichen Quellen und werden hier nicht veröffentlicht.</p>
+  <p>Miguel Vanegas · Berlin</p>
+</footer>
+</div>
+
+<script>
+(function(){
+  // copy email
+  const copyBtn=document.getElementById('copy');
+  copyBtn.addEventListener('click',()=>{
+    const t=document.getElementById('mail').textContent;
+    const done=()=>{copyBtn.textContent='Kopiert';setTimeout(()=>copyBtn.textContent='Kopieren',1600)};
+    try{navigator.clipboard.writeText(t).then(done,()=>select())}catch(e){select()}
+    function select(){const r=document.createRange();r.selectNodeContents(document.getElementById('mail'));const s=getSelection();s.removeAllRanges();s.addRange(r)}
+  });
+
+  // map viewer
+  const state={country:'co',layer:'h2',year:2025};
+  const h2pos={co:[0,0,0,2,3,3,4,5,10,10,10,10],cl:[1,1,2,3,4,5,7,7,8,8,8,8]};
+  const total={co:33,cl:16};
+  const unit={co:'Departements',cl:'Regionen'};
+  const name={co:'Kolumbien',cl:'Chile'};
+  const img=document.getElementById('map'), yr=document.getElementById('yr');
+  const files=[];
+  ['co','cl'].forEach(c=>['h2','wb'].forEach(l=>{for(let y=2019;y<=2030;y++)files.push(`karten/${c}-${l}-${y}.jpg`)}));
+  files.forEach(f=>{const i=new Image();i.src=f});
+  function render(){
+    img.src=`karten/${state.country}-${state.layer}-${state.year}.jpg`;
+    img.alt=(state.layer==='h2'?'Wasserstoffprojekte (kumuliert) in ':'Allgemeiner Wettbewerbsindex in ')+name[state.country]+', '+state.year;
+    document.getElementById('yrLabel').textContent=state.year;
+    const b=document.getElementById('yrBadge'), proj=state.year>2025;
+    b.textContent=proj?'Projektion':'beobachtet'; b.className='badge '+(proj?'proj':'obs');
+    const n=h2pos[state.country][state.year-2019];
+    document.getElementById('mapCaption').innerHTML = state.layer==='h2'
+      ? `<strong>${n} von ${total[state.country]}</strong> ${unit[state.country]} in ${name[state.country]} mit mindestens einem Wasserstoffprojekt (${state.year}).`
+      : `Allgemeiner Wettbewerbsindex (${state.country==='co'?'IDC':'IDERE'}) je ${state.country==='co'?'Departement':'Region'}, ${state.year}. Hell = höhere Wettbewerbsfähigkeit.`;
+    document.querySelectorAll('[data-country]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.country===state.country));
+    document.querySelectorAll('[data-layer]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.layer===state.layer));
+  }
+  document.querySelectorAll('[data-country]').forEach(x=>x.addEventListener('click',()=>{state.country=x.dataset.country;render()}));
+  document.querySelectorAll('[data-layer]').forEach(x=>x.addEventListener('click',()=>{state.layer=x.dataset.layer;render()}));
+  yr.addEventListener('input',()=>{state.year=+yr.value;render()});
+  let timer=null; const play=document.getElementById('play');
+  play.addEventListener('click',()=>{
+    if(timer){clearInterval(timer);timer=null;play.textContent='▶';return}
+    if(state.year>=2030)state.year=2018;
+    play.textContent='❚❚';
+    timer=setInterval(()=>{state.year++;yr.value=state.year;render();if(state.year>=2030){clearInterval(timer);timer=null;play.textContent='▶'}},700);
+  });
+  render();
+
+  // bachelor map viewer
+  const img2=document.getElementById('map2'), yr2=document.getElementById('yr2'), play2=document.getElementById('play2');
+  let y2=2017, timer2=null;
+  for(let y=2011;y<=2017;y++){const i=new Image();i.src=`karten/co-cl-${y}.jpg`}
+  function render2(){
+    img2.src=`karten/co-cl-${y2}.jpg`;
+    img2.alt=`Clusterinitiativen je Departement in Kolumbien, ${y2}`;
+    document.getElementById('yr2Label').textContent=y2;
+    document.getElementById('map2Caption').innerHTML=`Anzahl der Clusterinitiativen je Departement in Kolumbien, <strong>${y2}</strong>.`;
+  }
+  yr2.addEventListener('input',()=>{y2=+yr2.value;render2()});
+  play2.addEventListener('click',()=>{
+    if(timer2){clearInterval(timer2);timer2=null;play2.textContent='▶';return}
+    if(y2>=2017)y2=2010;
+    play2.textContent='❚❚';
+    timer2=setInterval(()=>{y2++;yr2.value=y2;render2();if(y2>=2017){clearInterval(timer2);timer2=null;play2.textContent='▶'}},800);
+  });
+  render2();
+
+  // charts
+  const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const years=[2011,2012,2013,2014,2015,2016,2017];
+  const series=[
+    ['Alimentos','Lebensmittel',[35,96,293,363,363,363,363]],
+    ['Turismo','Tourismus',[17,38,60,122,122,122,122]],
+    ['TIC','IKT',[26,70,91,91,91,98,98]],
+    ['Energia','Energie',[10,10,48,74,74,74,74]],
+    ['Textil','Textil',[10,24,35,39,43,53,53]],
+    ['Salud','Gesundheit',[10,10,20,35,35,35,35]]
+  ];
+  const colors=['--accent','--violet','#c08a2b','#3d79b8','#8b6f5c','--neg'];
+  const col=c=>c.startsWith('--')?`var(${c})`:c;
+
+  function rollout(){
+    const W=420,H=250,m={l:38,r:12,t:10,b:28},iw=W-m.l-m.r,ih=H-m.t-m.b,max=400;
+    const x=i=>m.l+i*iw/(years.length-1), y=v=>m.t+ih-v/max*ih;
+    let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Behandelte Gemeinden je Sektor 2011 bis 2017">`;
+    [0,100,200,300,400].forEach(v=>{s+=`<line x1="${m.l}" x2="${W-m.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)"/><text x="${m.l-6}" y="${y(v)+4}" text-anchor="end" font-size="11" fill="var(--muted)" font-family="var(--mono)">${v}</text>`});
+    years.forEach((yy,i)=>{s+=`<text x="${x(i)}" y="${H-8}" text-anchor="middle" font-size="11" fill="var(--muted)" font-family="var(--mono)">${String(yy).slice(2)}</text>`});
+    series.forEach((se,k)=>{const d=se[2].map((v,i)=>`${i?'L':'M'}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join('');s+=`<path d="${d}" fill="none" stroke="${col(colors[k])}" stroke-width="2.2"/><circle cx="${x(6)}" cy="${y(se[2][6])}" r="3" fill="${col(colors[k])}"/>`});
+    s+='</svg>';
+    document.getElementById('rollout').innerHTML=s;
+    document.getElementById('rolloutLegend').innerHTML=series.map((se,k)=>`<span><i style="background:${col(colors[k])}"></i>${se[1]}</span>`).join('');
+  }
+
+  // Tabelle 10 (BIP pro Kopf) und Tabelle 12 (Löhne), Basis 2 mit Kontrollen; sig = p<0.05
+  const eff=[
+    ['Energie',16.5,true,11.6,true],
+    ['IKT',13.5,true,8.5,true],
+    ['Lebensmittel',4.9,true,-1.4,false],
+    ['Textil',5.2,false,1.1,false],
+    ['Gesundheit',4.1,false,-9.3,true],
+    ['Tourismus',1.6,false,-4.3,true]
+  ];
+  function effects(){
+    const W=420,rowH=34,m={l:92,r:40,t:8,b:24},H=m.t+m.b+eff.length*rowH,iw=W-m.l-m.r,min=-12,max=18;
+    const x=v=>m.l+(v-min)/(max-min)*iw;
+    let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Effekte nach Sektor in Prozent">`;
+    [-10,0,10].forEach(v=>{s+=`<line x1="${x(v)}" x2="${x(v)}" y1="${m.t}" y2="${H-m.b}" stroke="${v===0?'var(--muted)':'var(--line)'}"/><text x="${x(v)}" y="${H-6}" text-anchor="middle" font-size="11" fill="var(--muted)" font-family="var(--mono)">${v>0?'+':''}${v} %</text>`});
+    eff.forEach((e,i)=>{
+      const y0=m.t+i*rowH;
+      s+=`<text x="${m.l-8}" y="${y0+rowH/2+4}" text-anchor="end" font-size="12" fill="var(--fg)">${e[0]}</text>`;
+      [[e[1],e[2],'--accent',5],[e[3],e[4],'--violet',17]].forEach(([v,sig,c,off])=>{
+        const a=x(Math.min(0,v)),w=Math.abs(x(v)-x(0));
+        const fill=sig?`var(${c})`:'var(--ns)';
+        s+=`<rect x="${a.toFixed(1)}" y="${y0+off}" width="${Math.max(w,1).toFixed(1)}" height="10" rx="1.5" fill="${fill}"/>`;
+        const tx=v>=0?x(v)+4:x(v)-4;
+        s+=`<text x="${tx}" y="${y0+off+9}" text-anchor="${v>=0?'start':'end'}" font-size="10" fill="var(--muted)" font-family="var(--mono)">${v>0?'+':''}${String(v).replace('.',',')}</text>`;
+      });
+    });
+    s+='</svg>';
+    document.getElementById('effects').innerHTML=s;
+  }
+  rollout();effects();
+})();
+</script>
+
+</body>
+</html>

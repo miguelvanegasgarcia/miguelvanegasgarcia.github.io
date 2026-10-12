@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="de">
+<html lang="de" data-lang="de">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Forschungsportfolio von Miguel Vanegas: interaktive Karten und Analysen aus Master- und Bachelorarbeit.">
+<meta name="description" content="Research portfolio of Miguel Vanegas: interactive maps and analyses from his Master and Bachelor theses. Forschungsportfolio mit interaktiven Karten.">
 <title>Miguel Vanegas Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -95,20 +95,31 @@ tr:last-child td{border-bottom:0}
 .legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:6px;vertical-align:-1px}
 footer{padding-top:32px;display:grid;gap:10px;font-size:.92rem;color:var(--muted)}
 @media (prefers-reduced-motion: reduce){*{transition:none!important}}
+/* language switch */
+html[data-lang="de"] [lang="en"], html[data-lang="en"] [lang="de"]{display:none!important}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.langswitch button{font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;padding:4px 12px}
 </style>
 </head>
 <body>
 
 <div class="wrap">
 <header>
-  <span class="eyebrow">Forschungs- &amp; Datenportfolio</span>
+  <div class="top">
+    <span class="eyebrow"><span lang="de">Forschungs- &amp; Datenportfolio</span><span lang="en">Research &amp; data portfolio</span></span>
+    <div class="seg langswitch" role="group" aria-label="Sprache / Language">
+      <button type="button" data-setlang="de" aria-pressed="true">DE</button>
+      <button type="button" data-setlang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
   <h1>Miguel Vanegas</h1>
-  <p class="lede">Volkswirt (B.Sc. Universidad de los Andes, M.A. HTW Berlin). Ich baue Paneldatensätze aus amtlichen Quellen, schätze ökonometrische Modelle und mache die Ergebnisse als Karten und Grafiken lesbar.</p>
-  <ul class="chips" aria-label="Werkzeuge">
+  <p class="lede" lang="de">Volkswirt (B.Sc. Universidad de los Andes, M.A. HTW Berlin). Ich baue Paneldatensätze aus amtlichen Quellen, schätze ökonometrische Modelle und mache die Ergebnisse als Karten und Grafiken lesbar.</p>
+  <p class="lede" lang="en">Economist (B.Sc. Universidad de los Andes, M.A. HTW Berlin). I build panel datasets from official sources, estimate econometric models and turn the results into maps and charts that are easy to read.</p>
+  <ul class="chips" aria-label="Tools">
     <li>R (RStudio)</li><li>Stata</li><li>Python (pandas)</li><li>SQL</li><li>SAS</li><li>SPSS</li><li>Power BI</li><li>Excel</li>
   </ul>
   <div class="contact">
-    <span class="muted">Kontakt:</span>
+    <span class="muted"><span lang="de">Kontakt:</span><span lang="en">Contact:</span></span>
     <code id="mail">miguelvanegas3@gmail.com</code>
     <button class="btn" id="copy" type="button">Kopieren</button>
     <span class="muted">· Berlin</span>
@@ -117,71 +128,92 @@ footer{padding-top:32px;display:grid;gap:10px;font-size:.92rem;color:var(--muted
 
 <section class="thesis" id="masterarbeit">
   <div style="display:grid;gap:8px">
-    <span class="eyebrow">Masterarbeit · HTW Berlin · 2026</span>
-    <h2>Energiewende in Kolumbien: Wasserstoffausbau, Kohleabhängigkeit und regionale Wettbewerbsfähigkeit</h2>
-    <p class="meta">Betreuung: Prof. Dr. Camille Logeay, Dr. Ourania Papasozomenou · Note: gut (2,13) · Werkzeuge: R, Python, Excel</p>
+    <span class="eyebrow"><span lang="de">Masterarbeit</span><span lang="en">Master’s thesis</span> · HTW Berlin · 2026</span>
+    <h2 lang="de">Energiewende in Kolumbien: Wasserstoffausbau, Kohleabhängigkeit und regionale Wettbewerbsfähigkeit</h2>
+    <h2 lang="en">Energy transition in Colombia: hydrogen expansion, coal dependence and regional competitiveness</h2>
+    <p class="meta" lang="de">Betreuung: Prof. Dr. Camille Logeay, Dr. Ourania Papasozomenou · Note: gut (2,13) · Werkzeuge: R, Python, Excel</p>
+    <p class="meta" lang="en">Supervisors: Prof. Dr. Camille Logeay, Dr. Ourania Papasozomenou · Grade: good (2.13) · Tools: R, Python, Excel</p>
   </div>
-  <p class="question">Wie hängen installierte Wasserstoffkapazität und Kohleabhängigkeit mit der Entwicklung der Wettbewerbsfähigkeit kolumbianischer Departements zusammen, wenn man Unterschiede in der Umweltperformance berücksichtigt?</p>
+  <p class="question" lang="de">Wie hängen installierte Wasserstoffkapazität und Kohleabhängigkeit mit der Entwicklung der Wettbewerbsfähigkeit kolumbianischer Departements zusammen, wenn man Unterschiede in der Umweltperformance berücksichtigt?</p>
+  <p class="question" lang="en">How are installed hydrogen capacity and coal dependence related to the competitiveness of Colombian departments once differences in environmental performance are taken into account?</p>
   <div class="facts">
-    <div><b>49</b><span>Regionen (33 CO, 16 CL)</span></div>
-    <div><b>2019–2030</b><span>beobachtet bis 2025, danach Projektion</span></div>
-    <div><b>604</b><span>Beobachtungen im gepoolten Panel</span></div>
-    <div><b>7</b><span>Modellspezifikationen</span></div>
+    <div><b>49</b><span lang="de">Regionen (33 CO, 16 CL)</span><span lang="en">regions (33 CO, 16 CL)</span></div>
+    <div><b>2019–2030</b><span lang="de">beobachtet bis 2025, danach Projektion</span><span lang="en">observed until 2025, projection afterwards</span></div>
+    <div><b>604</b><span lang="de">Beobachtungen im gepoolten Panel</span><span lang="en">observations in the pooled panel</span></div>
+    <div><b>7</b><span lang="de">Modellspezifikationen</span><span lang="en">model specifications</span></div>
   </div>
 
-  <div class="viewer" aria-label="Kartenansicht">
+  <div class="viewer" aria-label="Karten / Maps">
     <div class="controls">
-      <div class="seg" role="group" aria-label="Land">
-        <button type="button" data-country="co" aria-pressed="true">Kolumbien</button>
+      <div class="seg" role="group">
+        <button type="button" data-country="co" aria-pressed="true"><span lang="de">Kolumbien</span><span lang="en">Colombia</span></button>
         <button type="button" data-country="cl" aria-pressed="false">Chile</button>
       </div>
-      <div class="seg" role="group" aria-label="Ebene">
-        <button type="button" data-layer="h2" aria-pressed="true">Wasserstoffprojekte</button>
-        <button type="button" data-layer="wb" aria-pressed="false">Wettbewerbsfähigkeit</button>
+      <div class="seg" role="group">
+        <button type="button" data-layer="h2" aria-pressed="true"><span lang="de">Wasserstoffprojekte</span><span lang="en">Hydrogen projects</span></button>
+        <button type="button" data-layer="wb" aria-pressed="false"><span lang="de">Wettbewerbsfähigkeit</span><span lang="en">Competitiveness</span></button>
       </div>
       <div class="yearrow">
-        <button class="btn" id="play" type="button" aria-label="Jahre abspielen">▶</button>
-        <input id="yr" type="range" min="2019" max="2030" step="1" value="2025" aria-label="Jahr">
+        <button class="btn" id="play" type="button" aria-label="Play">▶</button>
+        <input id="yr" type="range" min="2019" max="2030" step="1" value="2025" aria-label="Jahr / Year">
         <span class="year" id="yrLabel">2025</span>
         <span class="badge obs" id="yrBadge">beobachtet</span>
       </div>
     </div>
-    <div class="plate"><img id="map" src="karten/co-h2-2025.jpg" alt="Karte" width="559" height="530"></div>
+    <div class="plate"><img id="map" src="karten/co-h2-2025.jpg" alt="" width="559" height="530"></div>
     <p class="caption" id="mapCaption"></p>
   </div>
-  <p class="caption">Alle 48 Karten habe ich in R aus den harmonisierten Paneldaten erstellt: Wettbewerbsindizes IDC (Kolumbien) und IDERE (Chile), Wasserstoffprojekte aus IEA, IRENA und nationalen Quellen. Die Jahre 2026 bis 2030 beruhen auf angekündigten Projekten und dienen nur der Beschreibung, nicht der Schätzung.</p>
+  <p class="caption" lang="de">Alle 48 Karten habe ich in R aus den harmonisierten Paneldaten erstellt: Wettbewerbsindizes IDC (Kolumbien) und IDERE (Chile), Wasserstoffprojekte aus IEA, IRENA und nationalen Quellen. Die Jahre 2026 bis 2030 beruhen auf angekündigten Projekten und dienen nur der Beschreibung, nicht der Schätzung.</p>
+  <p class="caption" lang="en">I created all 48 maps in R from the harmonised panel data: competitiveness indices IDC (Colombia) and IDERE (Chile), hydrogen projects from IEA, IRENA and national sources. The years 2026 to 2030 are based on announced projects and are descriptive only, they are not used in the estimation.</p>
 
   <div class="two">
     <div style="display:grid;gap:10px">
-      <h3>Methode</h3>
-      <ul class="plain">
+      <h3><span lang="de">Methode</span><span lang="en">Method</span></h3>
+      <ul class="plain" lang="de">
         <li>Zwei-Wege-Fixed-Effects (Region und Jahr), Standardfehler nach Region geclustert</li>
         <li>Interaktion Wasserstoffkapazität × Kohleanteil für fossil geprägte Regionen</li>
         <li>Präsenz-Dummy (extensiver Rand) und um ein Jahr verzögerte Exposition</li>
         <li>Gepooltes Panel Kolumbien und Chile mit Land×Jahr-Effekten</li>
         <li>Driscoll-Kraay-Standardfehler als Robustheitstest</li>
       </ul>
+      <ul class="plain" lang="en">
+        <li>Two-way fixed effects (region and year), standard errors clustered by region</li>
+        <li>Interaction hydrogen capacity × coal share for fossil-dependent regions</li>
+        <li>Presence dummy (extensive margin) and exposure lagged by one year</li>
+        <li>Pooled panel Colombia and Chile with country×year effects</li>
+        <li>Driscoll-Kraay standard errors as a robustness check</li>
+      </ul>
     </div>
     <div style="display:grid;gap:10px">
-      <h3>Ergebnis</h3>
-      <ul class="plain">
+      <h3><span lang="de">Ergebnis</span><span lang="en">Results</span></h3>
+      <ul class="plain" lang="de">
         <li>Früher Wasserstoffausbau bringt im Beobachtungszeitraum keinen sofortigen Gewinn an Wettbewerbsfähigkeit.</li>
         <li>Je höher der Kohleanteil, desto negativer der Zusammenhang (Interaktion signifikant auf 1 %).</li>
         <li>In Kolumbien fällt der Zusammenhang negativer aus als in Chile; das bestätigt auch die Driscoll-Kraay-Schätzung.</li>
+      </ul>
+      <ul class="plain" lang="en">
+        <li>Early hydrogen expansion brings no immediate gain in competitiveness during the observed period.</li>
+        <li>The higher the coal share, the more negative the relationship (interaction significant at 1 %).</li>
+        <li>The relationship is more negative in Colombia than in Chile, which the Driscoll-Kraay estimate also confirms.</li>
       </ul>
     </div>
   </div>
 
   <div class="tablewrap">
     <table>
-      <thead><tr><th>Modell</th><th>Variable</th><th style="text-align:right">Koeffizient</th><th>Signifikanz</th><th style="text-align:right">N</th></tr></thead>
+      <thead><tr>
+        <th><span lang="de">Modell</span><span lang="en">Model</span></th>
+        <th>Variable</th>
+        <th style="text-align:right"><span lang="de">Koeffizient</span><span lang="en">Coefficient</span></th>
+        <th><span lang="de">Signifikanz</span><span lang="en">Significance</span></th>
+        <th style="text-align:right">N</th></tr></thead>
       <tbody>
-        <tr><td>Basis-FE (Kolumbien)</td><td>Wasserstoffkapazität (MW)</td><td class="num pos">3,19e−7</td><td>p &lt; 0,05</td><td class="num">396</td></tr>
-        <tr><td>Interaktion mit Kohle</td><td>Wasserstoff × Kohleanteil</td><td class="num neg">−2,12e−5</td><td>p &lt; 0,01</td><td class="num">396</td></tr>
-        <tr><td>Präsenz-Dummy</td><td>mindestens ein Projekt</td><td class="num">≈ −0,03</td><td>n.s.</td><td class="num">396</td></tr>
-        <tr><td>Verzögerung (t−1)</td><td>Wasserstoffkapazität</td><td class="num neg">−3,65e−7</td><td>p &lt; 0,01</td><td class="num">363</td></tr>
-        <tr><td>Gepoolt CO + CL</td><td>Wasserstoffkapazität</td><td class="num">7,51e−8</td><td>n.s.</td><td class="num">604</td></tr>
-        <tr><td>Driscoll-Kraay</td><td>Wasserstoff × Kolumbien</td><td class="num neg">−3,39e−7</td><td>p &lt; 0,01</td><td class="num">604</td></tr>
+        <tr><td><span lang="de">Basis-FE (Kolumbien)</span><span lang="en">Baseline FE (Colombia)</span></td><td><span lang="de">Wasserstoffkapazität (MW)</span><span lang="en">Hydrogen capacity (MW)</span></td><td class="num pos"><span lang="de">3,19e−7</span><span lang="en">3.19e−7</span></td><td><span lang="de">p &lt; 0,05</span><span lang="en">p &lt; 0.05</span></td><td class="num">396</td></tr>
+        <tr><td><span lang="de">Interaktion mit Kohle</span><span lang="en">Interaction with coal</span></td><td><span lang="de">Wasserstoff × Kohleanteil</span><span lang="en">Hydrogen × coal share</span></td><td class="num neg"><span lang="de">−2,12e−5</span><span lang="en">−2.12e−5</span></td><td><span lang="de">p &lt; 0,01</span><span lang="en">p &lt; 0.01</span></td><td class="num">396</td></tr>
+        <tr><td><span lang="de">Präsenz-Dummy</span><span lang="en">Presence dummy</span></td><td><span lang="de">mindestens ein Projekt</span><span lang="en">at least one project</span></td><td class="num"><span lang="de">≈ −0,03</span><span lang="en">≈ −0.03</span></td><td>n.s.</td><td class="num">396</td></tr>
+        <tr><td><span lang="de">Verzögerung (t−1)</span><span lang="en">Lag (t−1)</span></td><td><span lang="de">Wasserstoffkapazität</span><span lang="en">Hydrogen capacity</span></td><td class="num neg"><span lang="de">−3,65e−7</span><span lang="en">−3.65e−7</span></td><td><span lang="de">p &lt; 0,01</span><span lang="en">p &lt; 0.01</span></td><td class="num">363</td></tr>
+        <tr><td><span lang="de">Gepoolt CO + CL</span><span lang="en">Pooled CO + CL</span></td><td><span lang="de">Wasserstoffkapazität</span><span lang="en">Hydrogen capacity</span></td><td class="num"><span lang="de">7,51e−8</span><span lang="en">7.51e−8</span></td><td>n.s.</td><td class="num">604</td></tr>
+        <tr><td>Driscoll-Kraay</td><td><span lang="de">Wasserstoff × Kolumbien</span><span lang="en">Hydrogen × Colombia</span></td><td class="num neg"><span lang="de">−3,39e−7</span><span lang="en">−3.39e−7</span></td><td><span lang="de">p &lt; 0,01</span><span lang="en">p &lt; 0.01</span></td><td class="num">604</td></tr>
       </tbody>
     </table>
   </div>
@@ -189,89 +221,121 @@ footer{padding-top:32px;display:grid;gap:10px;font-size:.92rem;color:var(--muted
 
 <section class="thesis" id="bachelorarbeit">
   <div style="display:grid;gap:8px">
-    <span class="eyebrow">Bachelorarbeit · Universidad de los Andes · 2019</span>
-    <h2>Wirkung von Clusterinitiativen auf Löhne und Einkommen in Kolumbien</h2>
-    <p class="meta">Betreuung: Nicolás de Roux Uribe · Werkzeug: Stata · Daten: DANE, CEDE, Gesundheitsministerium (PILA), Red Cluster Colombia</p>
+    <span class="eyebrow"><span lang="de">Bachelorarbeit</span><span lang="en">Bachelor’s thesis</span> · Universidad de los Andes · 2019</span>
+    <h2 lang="de">Wirkung von Clusterinitiativen auf Löhne und Einkommen in Kolumbien</h2>
+    <h2 lang="en">Effect of cluster initiatives on wages and income in Colombia</h2>
+    <p class="meta" lang="de">Betreuung: Nicolás de Roux Uribe · Werkzeug: Stata · Daten: DANE, CEDE, Gesundheitsministerium (PILA), Red Cluster Colombia</p>
+    <p class="meta" lang="en">Supervisor: Nicolás de Roux Uribe · Tool: Stata · Data: DANE, CEDE, Ministry of Health (PILA), Red Cluster Colombia</p>
   </div>
-  <p class="question">Welchen Effekt hatten die zwischen 2011 und 2017 umgesetzten Clusterinitiativen auf das BIP pro Kopf und die Jahreslöhne der Gemeinden?</p>
+  <p class="question" lang="de">Welchen Effekt hatten die zwischen 2011 und 2017 umgesetzten Clusterinitiativen auf das BIP pro Kopf und die Jahreslöhne der Gemeinden?</p>
+  <p class="question" lang="en">What effect did the cluster initiatives implemented between 2011 and 2017 have on municipal GDP per capita and annual wages?</p>
   <div class="facts">
-    <div><b>1.121</b><span>Gemeinden</span></div>
-    <div><b>2011–2017</b><span>Beobachtungszeitraum</span></div>
-    <div><b>7.854</b><span>Panel-Beobachtungen</span></div>
-    <div><b>92</b><span>Clusterinitiativen, 6 Sektoren</span></div>
+    <div><b><span lang="de">1.121</span><span lang="en">1,121</span></b><span lang="de">Gemeinden</span><span lang="en">municipalities</span></div>
+    <div><b>2011–2017</b><span lang="de">Beobachtungszeitraum</span><span lang="en">observation period</span></div>
+    <div><b><span lang="de">7.854</span><span lang="en">7,854</span></b><span lang="de">Panel-Beobachtungen</span><span lang="en">panel observations</span></div>
+    <div><b>92</b><span lang="de">Clusterinitiativen, 6 Sektoren</span><span lang="en">cluster initiatives, 6 sectors</span></div>
   </div>
-  <p>Methode: Difference-in-Differences mit Gemeinde- und Jahres-Effekten. Die Zuordnung der behandelten Gemeinden habe ich in zwei Varianten aufgebaut. Basis 2 ist meine eigene, genauere Auswahl: zwei Monate Recherche über Firmenverzeichnisse, Handelskammern, Energieversorger und Produktionsdaten.</p>
+  <p lang="de">Methode: Difference-in-Differences mit Gemeinde- und Jahres-Effekten. Die Zuordnung der behandelten Gemeinden habe ich in zwei Varianten aufgebaut. Basis 2 ist meine eigene, genauere Auswahl: zwei Monate Recherche über Firmenverzeichnisse, Handelskammern, Energieversorger und Produktionsdaten.</p>
+  <p lang="en">Method: difference-in-differences with municipality and year effects. I built the assignment of treated municipalities in two versions. Base 2 is my own, more precise selection, based on two months of research across company directories, chambers of commerce, energy suppliers and production data.</p>
 
-  <div class="viewer" aria-label="Kartenansicht Clusterinitiativen">
+  <div class="viewer" aria-label="Karten / Maps">
     <div class="controls">
       <div class="yearrow">
-        <button class="btn" id="play2" type="button" aria-label="Jahre abspielen">▶</button>
-        <input id="yr2" type="range" min="2011" max="2017" step="1" value="2017" aria-label="Jahr">
+        <button class="btn" id="play2" type="button" aria-label="Play">▶</button>
+        <input id="yr2" type="range" min="2011" max="2017" step="1" value="2017" aria-label="Jahr / Year">
         <span class="year" id="yr2Label">2017</span>
       </div>
     </div>
-    <div class="plate"><img id="map2" src="karten/co-cl-2017.jpg" alt="Clusterinitiativen je Departement in Kolumbien, 2017" width="484" height="529"></div>
+    <div class="plate"><img id="map2" src="karten/co-cl-2017.jpg" alt="" width="484" height="529"></div>
     <p class="caption" id="map2Caption"></p>
   </div>
-  <p class="caption">Die sieben Karten zeigen, wie sich die Clusterinitiativen von 2011 bis 2017 über die Departements ausgebreitet haben (0 bis 14 Initiativen je Departement, dunkler = mehr). Eigene Darstellung auf Basis der Daten von Red Cluster Colombia.</p>
+  <p class="caption" lang="de">Die sieben Karten zeigen, wie sich die Clusterinitiativen von 2011 bis 2017 über die Departements ausgebreitet haben (0 bis 14 Initiativen je Departement, dunkler = mehr). Eigene Darstellung auf Basis der Daten von Red Cluster Colombia.</p>
+  <p class="caption" lang="en">The seven maps show how the cluster initiatives spread across the departments from 2011 to 2017 (0 to 14 initiatives per department, darker = more). Own illustration based on data from Red Cluster Colombia.</p>
 
   <div class="two">
     <figure class="chart" style="margin:0">
-      <h3>Behandelte Gemeinden nach Sektor (Basis 2)</h3>
+      <h3><span lang="de">Behandelte Gemeinden nach Sektor (Basis 2)</span><span lang="en">Treated municipalities by sector (Base 2)</span></h3>
       <div id="rollout"></div>
       <div class="legend" id="rolloutLegend"></div>
     </figure>
     <figure class="chart" style="margin:0">
-      <h3>Effekt nach Sektor, mit Kontrollen (Basis 2)</h3>
+      <h3><span lang="de">Effekt nach Sektor, mit Kontrollen (Basis 2)</span><span lang="en">Effect by sector, with controls (Base 2)</span></h3>
       <div id="effects"></div>
       <div class="legend">
-        <span><i style="background:var(--accent)"></i>BIP pro Kopf</span>
-        <span><i style="background:var(--violet)"></i>Jahreslöhne</span>
-        <span><i style="background:var(--ns)"></i>nicht signifikant</span>
+        <span><i style="background:var(--accent)"></i><span lang="de">BIP pro Kopf</span><span lang="en">GDP per capita</span></span>
+        <span><i style="background:var(--violet)"></i><span lang="de">Jahreslöhne</span><span lang="en">Annual wages</span></span>
+        <span><i style="background:var(--ns)"></i><span lang="de">nicht signifikant</span><span lang="en">not significant</span></span>
       </div>
     </figure>
   </div>
-  <p class="caption">Effekte in Prozent (Log-Punkte × 100), ohne Ausreißer und ohne die größten Städte. Über alle Initiativen hinweg: <strong>+6,9 %</strong> BIP pro Kopf und <strong>+6,6 %</strong> Löhne, jeweils signifikant auf 1 %. Energie und IKT sind die einzigen Sektoren mit konsistent positiven Effekten auf beide Größen.</p>
+  <p class="caption" lang="de">Effekte in Prozent (Log-Punkte × 100), ohne Ausreißer und ohne die größten Städte. Über alle Initiativen hinweg: <strong>+6,9 %</strong> BIP pro Kopf und <strong>+6,6 %</strong> Löhne, jeweils signifikant auf 1 %. Energie und IKT sind die einzigen Sektoren mit konsistent positiven Effekten auf beide Größen.</p>
+  <p class="caption" lang="en">Effects in percent (log points × 100), excluding outliers and the largest cities. Across all initiatives: <strong>+6.9 %</strong> GDP per capita and <strong>+6.6 %</strong> wages, each significant at 1 %. Energy and ICT are the only sectors with consistently positive effects on both outcomes.</p>
 </section>
 
 <footer>
-  <p>Beide Arbeiten sende ich auf Anfrage vollständig zu. Die Rohdaten stammen aus amtlichen Quellen und werden hier nicht veröffentlicht.</p>
+  <p lang="de">Beide Arbeiten sende ich auf Anfrage vollständig zu. Die Rohdaten stammen aus amtlichen Quellen und werden hier nicht veröffentlicht.</p>
+  <p lang="en">I am happy to send both theses in full on request. The raw data come from official sources and are not published here.</p>
   <p>Miguel Vanegas · Berlin</p>
 </footer>
 </div>
 
 <script>
 (function(){
+  const T={
+    de:{copy:'Kopieren',copied:'Kopiert',obs:'beobachtet',proj:'Projektion',
+        name:{co:'Kolumbien',cl:'Chile'},unit:{co:'Departements',cl:'Regionen'},one:{co:'Departement',cl:'Region'},
+        h2cap:(n,t,u,c,y)=>`<strong>${n} von ${t}</strong> ${u} in ${c} mit mindestens einem Wasserstoffprojekt (${y}).`,
+        wbcap:(idx,o,y)=>`Allgemeiner Wettbewerbsindex (${idx}) je ${o}, ${y}. Hell = höhere Wettbewerbsfähigkeit.`,
+        h2alt:(c,y)=>`Wasserstoffprojekte (kumuliert) in ${c}, ${y}`, wbalt:(c,y)=>`Allgemeiner Wettbewerbsindex in ${c}, ${y}`,
+        clcap:y=>`Anzahl der Clusterinitiativen je Departement in Kolumbien, <strong>${y}</strong>.`,
+        clalt:y=>`Clusterinitiativen je Departement in Kolumbien, ${y}`,
+        sectors:['Lebensmittel','Tourismus','IKT','Energie','Textil','Gesundheit'],
+        effSectors:['Energie','IKT','Lebensmittel','Textil','Gesundheit','Tourismus'],
+        rollAria:'Behandelte Gemeinden je Sektor 2011 bis 2017', effAria:'Effekte nach Sektor in Prozent', dec:','},
+    en:{copy:'Copy',copied:'Copied',obs:'observed',proj:'projection',
+        name:{co:'Colombia',cl:'Chile'},unit:{co:'departments',cl:'regions'},one:{co:'department',cl:'region'},
+        h2cap:(n,t,u,c,y)=>`<strong>${n} of ${t}</strong> ${u} in ${c} with at least one hydrogen project (${y}).`,
+        wbcap:(idx,o,y)=>`General competitiveness index (${idx}) per ${o}, ${y}. Lighter = higher competitiveness.`,
+        h2alt:(c,y)=>`Hydrogen projects (cumulative) in ${c}, ${y}`, wbalt:(c,y)=>`General competitiveness index in ${c}, ${y}`,
+        clcap:y=>`Number of cluster initiatives per department in Colombia, <strong>${y}</strong>.`,
+        clalt:y=>`Cluster initiatives per department in Colombia, ${y}`,
+        sectors:['Food','Tourism','ICT','Energy','Textiles','Health'],
+        effSectors:['Energy','ICT','Food','Textiles','Health','Tourism'],
+        rollAria:'Treated municipalities by sector 2011 to 2017', effAria:'Effects by sector in percent', dec:'.'}
+  };
+  let lang='de';
+  try{const q=new URLSearchParams(location.search).get('lang');
+      const s=localStorage.getItem('lang');
+      if(q==='en'||q==='de')lang=q; else if(s==='en'||s==='de')lang=s;}catch(e){}
+  const L=()=>T[lang];
+
   // copy email
   const copyBtn=document.getElementById('copy');
   copyBtn.addEventListener('click',()=>{
     const t=document.getElementById('mail').textContent;
-    const done=()=>{copyBtn.textContent='Kopiert';setTimeout(()=>copyBtn.textContent='Kopieren',1600)};
+    const done=()=>{copyBtn.textContent=L().copied;setTimeout(()=>copyBtn.textContent=L().copy,1600)};
     try{navigator.clipboard.writeText(t).then(done,()=>select())}catch(e){select()}
     function select(){const r=document.createRange();r.selectNodeContents(document.getElementById('mail'));const s=getSelection();s.removeAllRanges();s.addRange(r)}
   });
 
-  // map viewer
+  // map viewer (master)
   const state={country:'co',layer:'h2',year:2025};
   const h2pos={co:[0,0,0,2,3,3,4,5,10,10,10,10],cl:[1,1,2,3,4,5,7,7,8,8,8,8]};
   const total={co:33,cl:16};
-  const unit={co:'Departements',cl:'Regionen'};
-  const name={co:'Kolumbien',cl:'Chile'};
   const img=document.getElementById('map'), yr=document.getElementById('yr');
-  const files=[];
-  ['co','cl'].forEach(c=>['h2','wb'].forEach(l=>{for(let y=2019;y<=2030;y++)files.push(`karten/${c}-${l}-${y}.jpg`)}));
-  files.forEach(f=>{const i=new Image();i.src=f});
+  ['co','cl'].forEach(c=>['h2','wb'].forEach(l=>{for(let y=2019;y<=2030;y++){const i=new Image();i.src=`karten/${c}-${l}-${y}.jpg`}}));
   function render(){
-    img.src=`karten/${state.country}-${state.layer}-${state.year}.jpg`;
-    img.alt=(state.layer==='h2'?'Wasserstoffprojekte (kumuliert) in ':'Allgemeiner Wettbewerbsindex in ')+name[state.country]+', '+state.year;
-    document.getElementById('yrLabel').textContent=state.year;
-    const b=document.getElementById('yrBadge'), proj=state.year>2025;
-    b.textContent=proj?'Projektion':'beobachtet'; b.className='badge '+(proj?'proj':'obs');
-    const n=h2pos[state.country][state.year-2019];
+    const t=L(), c=state.country, y=state.year;
+    img.src=`karten/${c}-${state.layer}-${y}.jpg`;
+    img.alt=state.layer==='h2'?t.h2alt(t.name[c],y):t.wbalt(t.name[c],y);
+    document.getElementById('yrLabel').textContent=y;
+    const b=document.getElementById('yrBadge'), proj=y>2025;
+    b.textContent=proj?t.proj:t.obs; b.className='badge '+(proj?'proj':'obs');
+    const n=h2pos[c][y-2019];
     document.getElementById('mapCaption').innerHTML = state.layer==='h2'
-      ? `<strong>${n} von ${total[state.country]}</strong> ${unit[state.country]} in ${name[state.country]} mit mindestens einem Wasserstoffprojekt (${state.year}).`
-      : `Allgemeiner Wettbewerbsindex (${state.country==='co'?'IDC':'IDERE'}) je ${state.country==='co'?'Departement':'Region'}, ${state.year}. Hell = höhere Wettbewerbsfähigkeit.`;
-    document.querySelectorAll('[data-country]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.country===state.country));
+      ? t.h2cap(n,total[c],t.unit[c],t.name[c],y)
+      : t.wbcap(c==='co'?'IDC':'IDERE',t.one[c],y);
+    document.querySelectorAll('[data-country]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.country===c));
     document.querySelectorAll('[data-layer]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.layer===state.layer));
   }
   document.querySelectorAll('[data-country]').forEach(x=>x.addEventListener('click',()=>{state.country=x.dataset.country;render()}));
@@ -284,17 +348,16 @@ footer{padding-top:32px;display:grid;gap:10px;font-size:.92rem;color:var(--muted
     play.textContent='❚❚';
     timer=setInterval(()=>{state.year++;yr.value=state.year;render();if(state.year>=2030){clearInterval(timer);timer=null;play.textContent='▶'}},700);
   });
-  render();
 
-  // bachelor map viewer
+  // map viewer (bachelor)
   const img2=document.getElementById('map2'), yr2=document.getElementById('yr2'), play2=document.getElementById('play2');
   let y2=2017, timer2=null;
   for(let y=2011;y<=2017;y++){const i=new Image();i.src=`karten/co-cl-${y}.jpg`}
   function render2(){
     img2.src=`karten/co-cl-${y2}.jpg`;
-    img2.alt=`Clusterinitiativen je Departement in Kolumbien, ${y2}`;
+    img2.alt=L().clalt(y2);
     document.getElementById('yr2Label').textContent=y2;
-    document.getElementById('map2Caption').innerHTML=`Anzahl der Clusterinitiativen je Departement in Kolumbien, <strong>${y2}</strong>.`;
+    document.getElementById('map2Caption').innerHTML=L().clcap(y2);
   }
   yr2.addEventListener('input',()=>{y2=+yr2.value;render2()});
   play2.addEventListener('click',()=>{
@@ -303,63 +366,57 @@ footer{padding-top:32px;display:grid;gap:10px;font-size:.92rem;color:var(--muted
     play2.textContent='❚❚';
     timer2=setInterval(()=>{y2++;yr2.value=y2;render2();if(y2>=2017){clearInterval(timer2);timer2=null;play2.textContent='▶'}},800);
   });
-  render2();
 
   // charts
-  const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
   const years=[2011,2012,2013,2014,2015,2016,2017];
-  const series=[
-    ['Alimentos','Lebensmittel',[35,96,293,363,363,363,363]],
-    ['Turismo','Tourismus',[17,38,60,122,122,122,122]],
-    ['TIC','IKT',[26,70,91,91,91,98,98]],
-    ['Energia','Energie',[10,10,48,74,74,74,74]],
-    ['Textil','Textil',[10,24,35,39,43,53,53]],
-    ['Salud','Gesundheit',[10,10,20,35,35,35,35]]
-  ];
+  const series=[[35,96,293,363,363,363,363],[17,38,60,122,122,122,122],[26,70,91,91,91,98,98],[10,10,48,74,74,74,74],[10,24,35,39,43,53,53],[10,10,20,35,35,35,35]];
   const colors=['--accent','--violet','#c08a2b','#3d79b8','#8b6f5c','--neg'];
   const col=c=>c.startsWith('--')?`var(${c})`:c;
-
   function rollout(){
-    const W=420,H=250,m={l:38,r:12,t:10,b:28},iw=W-m.l-m.r,ih=H-m.t-m.b,max=400;
+    const t=L(), W=420,H=250,m={l:38,r:12,t:10,b:28},iw=W-m.l-m.r,ih=H-m.t-m.b,max=400;
     const x=i=>m.l+i*iw/(years.length-1), y=v=>m.t+ih-v/max*ih;
-    let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Behandelte Gemeinden je Sektor 2011 bis 2017">`;
+    let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${t.rollAria}">`;
     [0,100,200,300,400].forEach(v=>{s+=`<line x1="${m.l}" x2="${W-m.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)"/><text x="${m.l-6}" y="${y(v)+4}" text-anchor="end" font-size="11" fill="var(--muted)" font-family="var(--mono)">${v}</text>`});
     years.forEach((yy,i)=>{s+=`<text x="${x(i)}" y="${H-8}" text-anchor="middle" font-size="11" fill="var(--muted)" font-family="var(--mono)">${String(yy).slice(2)}</text>`});
-    series.forEach((se,k)=>{const d=se[2].map((v,i)=>`${i?'L':'M'}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join('');s+=`<path d="${d}" fill="none" stroke="${col(colors[k])}" stroke-width="2.2"/><circle cx="${x(6)}" cy="${y(se[2][6])}" r="3" fill="${col(colors[k])}"/>`});
+    series.forEach((se,k)=>{const d=se.map((v,i)=>`${i?'L':'M'}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join('');s+=`<path d="${d}" fill="none" stroke="${col(colors[k])}" stroke-width="2.2"/><circle cx="${x(6)}" cy="${y(se[6])}" r="3" fill="${col(colors[k])}"/>`});
     s+='</svg>';
     document.getElementById('rollout').innerHTML=s;
-    document.getElementById('rolloutLegend').innerHTML=series.map((se,k)=>`<span><i style="background:${col(colors[k])}"></i>${se[1]}</span>`).join('');
+    document.getElementById('rolloutLegend').innerHTML=t.sectors.map((n,k)=>`<span><i style="background:${col(colors[k])}"></i>${n}</span>`).join('');
   }
-
-  // Tabelle 10 (BIP pro Kopf) und Tabelle 12 (Löhne), Basis 2 mit Kontrollen; sig = p<0.05
-  const eff=[
-    ['Energie',16.5,true,11.6,true],
-    ['IKT',13.5,true,8.5,true],
-    ['Lebensmittel',4.9,true,-1.4,false],
-    ['Textil',5.2,false,1.1,false],
-    ['Gesundheit',4.1,false,-9.3,true],
-    ['Tourismus',1.6,false,-4.3,true]
-  ];
+  // Table 10 (GDP per capita) and Table 12 (wages), Base 2 with controls; sig = p<0.05
+  const eff=[[16.5,true,11.6,true],[13.5,true,8.5,true],[4.9,true,-1.4,false],[5.2,false,1.1,false],[4.1,false,-9.3,true],[1.6,false,-4.3,true]];
   function effects(){
-    const W=420,rowH=34,m={l:92,r:40,t:8,b:24},H=m.t+m.b+eff.length*rowH,iw=W-m.l-m.r,min=-12,max=18;
+    const t=L(), W=420,rowH=34,m={l:92,r:40,t:8,b:24},H=m.t+m.b+eff.length*rowH,iw=W-m.l-m.r,min=-12,max=18;
     const x=v=>m.l+(v-min)/(max-min)*iw;
-    let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Effekte nach Sektor in Prozent">`;
+    let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${t.effAria}">`;
     [-10,0,10].forEach(v=>{s+=`<line x1="${x(v)}" x2="${x(v)}" y1="${m.t}" y2="${H-m.b}" stroke="${v===0?'var(--muted)':'var(--line)'}"/><text x="${x(v)}" y="${H-6}" text-anchor="middle" font-size="11" fill="var(--muted)" font-family="var(--mono)">${v>0?'+':''}${v} %</text>`});
     eff.forEach((e,i)=>{
       const y0=m.t+i*rowH;
-      s+=`<text x="${m.l-8}" y="${y0+rowH/2+4}" text-anchor="end" font-size="12" fill="var(--fg)">${e[0]}</text>`;
-      [[e[1],e[2],'--accent',5],[e[3],e[4],'--violet',17]].forEach(([v,sig,c,off])=>{
+      s+=`<text x="${m.l-8}" y="${y0+rowH/2+4}" text-anchor="end" font-size="12" fill="var(--fg)">${t.effSectors[i]}</text>`;
+      [[e[0],e[1],'--accent',5],[e[2],e[3],'--violet',17]].forEach(([v,sig,c,off])=>{
         const a=x(Math.min(0,v)),w=Math.abs(x(v)-x(0));
-        const fill=sig?`var(${c})`:'var(--ns)';
-        s+=`<rect x="${a.toFixed(1)}" y="${y0+off}" width="${Math.max(w,1).toFixed(1)}" height="10" rx="1.5" fill="${fill}"/>`;
+        s+=`<rect x="${a.toFixed(1)}" y="${y0+off}" width="${Math.max(w,1).toFixed(1)}" height="10" rx="1.5" fill="${sig?`var(${c})`:'var(--ns)'}"/>`;
         const tx=v>=0?x(v)+4:x(v)-4;
-        s+=`<text x="${tx}" y="${y0+off+9}" text-anchor="${v>=0?'start':'end'}" font-size="10" fill="var(--muted)" font-family="var(--mono)">${v>0?'+':''}${String(v).replace('.',',')}</text>`;
+        s+=`<text x="${tx}" y="${y0+off+9}" text-anchor="${v>=0?'start':'end'}" font-size="10" fill="var(--muted)" font-family="var(--mono)">${v>0?'+':''}${String(v).replace('.',t.dec)}</text>`;
       });
     });
     s+='</svg>';
     document.getElementById('effects').innerHTML=s;
   }
-  rollout();effects();
+
+  // language switch
+  function setLang(l){
+    lang=l;
+    const r=document.documentElement;
+    r.lang=l; r.dataset.lang=l;
+    document.title=l==='en'?'Miguel Vanegas · Portfolio':'Miguel Vanegas · Portfolio';
+    copyBtn.textContent=L().copy;
+    document.querySelectorAll('[data-setlang]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.setlang===l));
+    try{localStorage.setItem('lang',l)}catch(e){}
+    render();render2();rollout();effects();
+  }
+  document.querySelectorAll('[data-setlang]').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.setlang)));
+  setLang(lang);
 })();
 </script>
 

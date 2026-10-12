@@ -8,3 +8,5 @@ Interaktive Darstellung meiner beiden Abschlussarbeiten:
 Live-Seite: https://miguelvanegasgarcia.github.io
 
 Kontakt: miguelvanegas3@gmail.com
+
+English version: https://miguelvanegasgarcia.github.io/?lang=en (or use the DE | EN switch at the top of the page).
